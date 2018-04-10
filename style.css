@@ -1,0 +1,104 @@
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.wrapper {
+  position: relative;
+  background: white;
+  border: 5px solid #000;
+  border-radius: 50%;
+  z-index: 999;
+  
+}
+
+.wrapper .rect{
+  position: absolute;
+  height:6px;
+  width: 6px;
+  background: #000;
+  z-index: 999;
+}
+
+.wrapper .rect.one{
+  bottom: -2px;
+  left: calc(100px/2 - 9px);
+}
+
+.wrapper .rect.two{
+  left: -2px;
+  top: calc(100px/2 - 9px);
+}
+
+.wrapper, .wrapper * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100px;
+  height: 100px;
+}
+
+.wrapper .pie {
+  width: 50%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  position: absolute;
+  background: #000;
+  border: 5px solid #fff;
+}
+
+.wrapper .spinner {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  z-index: 200;
+  border-right: none;
+  animation: rota 30s linear infinite;
+}
+
+.wrapper:hover .spinner,
+.wrapper:hover .filler,
+.wrapper:hover .mask {
+  animation-play-state: running;
+}
+
+.wrapper .filler {
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 100;
+  animation: opa 30s steps(1, end) infinite reverse;
+  border-left: none;
+}
+
+.wrapper .mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  opacity: 1;
+  z-index: 300;
+  animation: opa 30s steps(1, end) infinite;
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+}
+
+@keyframes rota {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes opa {
+  0% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
